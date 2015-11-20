@@ -158,7 +158,7 @@ INSTALLED_APPS = (
 
     #'storages',
     #'haystack',
-    'django_rq',
+    # 'django_rq',
     'imagekit',
     'robots',
     'ckeditorfiles',
