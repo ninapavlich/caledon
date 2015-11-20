@@ -203,7 +203,7 @@ INSTALLED_APPS = (
 ROOT_URLCONF = 'caledon.urls'
 APPEND_SLASH = True
 
-LEGACY_URL_CHOICES = ('page', 'form', 'project', 'projecttag', 'projectlist')
+LEGACY_URL_CHOICES = ('page', 'form')
 LEGACY_URL_MODEL = 'core.LegacyURL'
 LEGACY_URL_ARCHIVE_DOMAIN = 'http://caledon.com'
 LEGACY_URL_IGNORE_LIST = []
@@ -496,7 +496,7 @@ TEMPLATE_MODEL = 'core.Template'
 PAGE_MODEL = 'page.Page'
 
 MENU_MODEL = 'core.MenuItem'
-MENU_MODEL_CHOICES = ('page','form', 'projecttag', 'projectlist')
+MENU_MODEL_CHOICES = ('page','form')
 
 
 

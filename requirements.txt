@@ -28,6 +28,8 @@ django-imagekit-cropper==1.9
 django-inline-wrestler==4.4
 django-localflavor==1.1
 django-object-actions==0.5.1
+django-pylibmc==0.5.0
+django-pylibmc-sasl==0.2.4
 django-redis-cache==1.6.3
 django-reversion==1.8.7
 django-robots==1.1
