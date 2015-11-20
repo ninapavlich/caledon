@@ -6,7 +6,7 @@ import herokuify
 # Generic Django project settings
 #==============================================================================
 
-DEBUG = False
+DEBUG = env.get("DEBUG", False)
 TEMPLATE_DEBUG = DEBUG
 ALLOWED_HOSTS = ['*']
 
