@@ -20,3 +20,5 @@ To bootstrap Django:
     source venv/bin/activate
     pip install -r requirements.txt
     manage.py syncdb --migrate
+=======
+
