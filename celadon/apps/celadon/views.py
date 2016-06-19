@@ -14,7 +14,12 @@ from .models import *
 
 
 
-class MatchView(DetailView): #TODO -- move templates to ObjectTemplateResponseMixin, SingleObjectMixin, 
+class MatchDetailView(DetailView): #TODO -- move templates to ObjectTemplateResponseMixin, SingleObjectMixin, 
     template_name="caledon/match_detail.html"
     model = Match
 
+
+class MatchListView(ListView): #TODO -- move templates to ObjectTemplateResponseMixin, SingleObjectMixin, 
+    template_name="caledon/match_list.html"
+    model = Match
+    paginate_by = 10

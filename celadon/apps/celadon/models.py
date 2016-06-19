@@ -35,6 +35,9 @@ class Match(BaseModel):
     def __unicode__(self):
         return "MATCH %s" % ( self.title )
 
+    def get_absolute_url(self):
+        return reverse('match_detail_view',  args=[self.slug] )
+
     class Meta:
         verbose_name = "Match"
         verbose_name_plural = "Matches"

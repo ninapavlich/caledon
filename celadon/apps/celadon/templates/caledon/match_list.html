@@ -1,0 +1,6 @@
+<h1>Matches:</h1>
+<ul>
+{% for match in object_list %}
+<li><a href="{{match.get_absolute_url}}">{{match.title}}</a></li>
+{% endfor %}
+</ul>
