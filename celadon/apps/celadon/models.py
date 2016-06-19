@@ -32,6 +32,11 @@ class Match(BaseModel):
     title   = models.CharField( max_length = 255)
     slug    = models.CharField( max_length = 255)
 
+    class Meta:
+        verbose_name = "Match"
+        verbose_name_plural = "Matches"
+        ordering = [ '-created_date' ] 
+
     def save(self, *args, **kwargs):
         unique_slugify(self, self.title) 
         super(Match, self).save(*args, **kwargs)
@@ -41,11 +46,29 @@ class MatchUser(BaseModel):
     match = models.ForeignKey('celadon.Match')
     user = models.ForeignKey('account.User')
 
+    autocomplete_lookup_fields = {
+        'fk': ['match', 'user'],
+    }
+    raw_id_fields = ('match', 'user', ) 
+
+
+    class Meta:
+        ordering = [ '-created_date' ] 
+
 
 class MatchLogs(BaseModel):
     match = models.ForeignKey('celadon.Match')
     user = models.ForeignKey('account.User')
 
+    autocomplete_lookup_fields = {
+        'fk': ['match', 'user'],
+    }
+    raw_id_fields = ('match', 'user', ) 
+
+    class Meta:
+        verbose_name = "Match Log"
+        verbose_name_plural = "Match Logs"
+        ordering = [ '-created_date' ] 
     #TODO -- add details
 
 

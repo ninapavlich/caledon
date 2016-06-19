@@ -6,19 +6,35 @@ from .models import *
 
 
 
+class MatchUserInline(admin.TabularInline):
+    model = MatchUser
+    extra = 0
+   
+    autocomplete_lookup_fields = {
+        'fk': ['user'],
+    }
+    raw_id_fields = ('user', ) 
+
 class MatchAdmin(UnsavedChangesAdmin):
-    
-    pass
+
+    prepopulated_fields = {"slug": ("title",)}
+    inlines = [MatchUserInline]
 
 
 class MatchUserAdmin(UnsavedChangesAdmin):
 
-    pass
+    autocomplete_lookup_fields = {
+        'fk': ['match', 'user'],
+    }
+    raw_id_fields = ('match', 'user', ) 
 
 
 class MatchLogsAdmin(UnsavedChangesAdmin):
 
-    pass
+    autocomplete_lookup_fields = {
+        'fk': ['match', 'user'],
+    }
+    raw_id_fields = ('match', 'user', ) 
 
 
 
