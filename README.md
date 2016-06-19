@@ -45,8 +45,8 @@ To connect to the Heroku project:
     #Once installed, log in to your Heroku account
     heroku login
 
-    #Link nmaahc folder with heroku project:
-    heroku git:remote -a nmaahc
+    #Link celadon folder with heroku project:
+    heroku git:remote -a celadon
 
     #To push to heroku
     git push heroku master
