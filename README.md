@@ -31,6 +31,9 @@ The first time you set up the project, run the following commands:
     virtualenv venv
     source venv/bin/activate
     pip install -r requirements.txt
+
+Place environment variables in .env at the top level of the project
+
     python manage.py migrate
 
     python manage.py loaddata celadon/fixtures/core.json #Note this may take several minutes to complete...
