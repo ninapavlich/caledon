@@ -9,6 +9,7 @@ csscompressor==0.9.3
 distribute==0.6.38
 dj-database-url==0.1.2
 django-ace==1.0.2
+django-ace-overlay==0.3
 django-appconf==1.0.1
 django-batch-uploader==0.10.1
 -e git+https://github.com/ninapavlich/django-carbon.git@c3ac30222ba957af7da6f8ae3eab6358132d4597#egg=django_carbon-dev
