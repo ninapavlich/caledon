@@ -32,6 +32,9 @@ class Match(BaseModel):
     title   = models.CharField( max_length = 255)
     slug    = models.CharField( max_length = 255)
 
+    def __unicode__(self):
+        return "MATCH %s" % ( self.title )
+
     class Meta:
         verbose_name = "Match"
         verbose_name_plural = "Matches"
@@ -46,10 +49,7 @@ class MatchUser(BaseModel):
     match = models.ForeignKey('celadon.Match')
     user = models.ForeignKey('account.User')
 
-    autocomplete_lookup_fields = {
-        'fk': ['match', 'user'],
-    }
-    raw_id_fields = ('match', 'user', ) 
+
 
 
     class Meta:
@@ -59,11 +59,6 @@ class MatchUser(BaseModel):
 class MatchLogs(BaseModel):
     match = models.ForeignKey('celadon.Match')
     user = models.ForeignKey('account.User')
-
-    autocomplete_lookup_fields = {
-        'fk': ['match', 'user'],
-    }
-    raw_id_fields = ('match', 'user', ) 
 
     class Meta:
         verbose_name = "Match Log"

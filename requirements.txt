@@ -38,14 +38,17 @@ django-unsaved-changes==0.9
 gunicorn==19.2.1
 html5lib==1.0b3
 httplib2==0.9.1
-libsass==0.7.0
+libsass==0.7.
+lxml==3.5.0
 newrelic==2.44.0.36
 pilkit==1.1.12
-ply==3.4
-#3.6 is not compatible with latest slimit
-psycopg2==2.5.4
+ply==3.4#3.6 is not compatible with latest slimit
+psycopg2==2.6.1
 pylibmc==1.4.1
 pyparsing==2.0.3
+python-dateutil==2.4.2
+pytz==2016.4
+requests==2.9.1
 scss==0.8.73
 six==1.9.0
 slimit==0.8.1

@@ -4,6 +4,6 @@ from .views import *
 
 urlpatterns = patterns('',
     
-    url(r'^(?P<slug>[\w-]+)/$', MatchView.as_view(), name="match_view"),
+    url(r'^matches/(?P<slug>[\w-]+)/$', MatchView.as_view(), name="match_view"),
 
 )
