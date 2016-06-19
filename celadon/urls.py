@@ -64,6 +64,7 @@ urlpatterns +=  patterns('',
     url(r'^', include('celadon.apps.media.urls')),
     url(r'^', include('celadon.apps.form.urls')),
     url(r'^', include('celadon.apps.email.urls')),
+    url(r'^', include('celadon.apps.celadon.urls')),
     url(r'^', include('celadon.apps.page.urls')),
     
 )

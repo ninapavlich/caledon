@@ -41,7 +41,8 @@ httplib2==0.9.1
 libsass==0.7.0
 newrelic==2.44.0.36
 pilkit==1.1.12
-ply==3.4#3.6 is not compatible with latest slimit
+ply==3.4
+#3.6 is not compatible with latest slimit
 psycopg2==2.5.4
 pylibmc==1.4.1
 pyparsing==2.0.3
