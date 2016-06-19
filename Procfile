@@ -1,1 +1,1 @@
-web: gunicorn caledon.wsgi:application
+web: gunicorn celadon.wsgi:application
