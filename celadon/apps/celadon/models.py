@@ -11,10 +11,13 @@ from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
 
+from carbon.utils.slugify import unique_slugify
+
+
 class BaseModel(models.Model):
 
     created_date    = models.DateTimeField(auto_now_add=True)
-    
+
     def get_edit_url(self):
         return reverse('admin:%s_%s_change' %(self._meta.app_label,  self._meta.model_name),  args=[self.id] )
 
@@ -25,44 +28,24 @@ class BaseModel(models.Model):
     class Meta:
         abstract = True          
 
-class Config(BaseModel):
-    """
-    Django model for settings, to allows configuring kiosk variables through
-    the admin interface.
-    """
-    TYPE_CHOICES = (
-        ('string', 'String'),
-        ('int', 'Integer'),
-        ('decimal', 'Decimal'),
-        ('bool', 'Boolean'),
-    )
-    key = models.CharField(max_length=255, unique=True)
-    value = models.TextField(blank=False)
-    value_type = models.CharField(max_length=200, blank=False,
-                                  choices=TYPE_CHOICES)
-    help = models.TextField( help_text = "Additional information about this value.", null = True )
+class Match(BaseModel):
+    title   = models.CharField( max_length = 255)
+    slug    = models.CharField( max_length = 255)
 
-    # -- PROPERTIES -- #
-    # -- INSTANCE METHODS -- #    
-    def typed_js( self ):
-        """
-        Value Formatted for Javascript
-        """
-        if self.value_type in [ 'bool', 'int', 'decimal' ]:
-            return self.value
-        elif self.value_type == 'string':
-            return '"%s"' % self.value
-    
-    def __unicode__(self):
-        return "%s:%s" % ( self.key, self.value )
+    def save(self, *args, **kwargs):
+        unique_slugify(self, self.title) 
+        super(Match, self).save(*args, **kwargs)
 
-    # -- STATIC AND CLASS METHODS -- #
-    @staticmethod
-    def autocomplete_search_fields():
-        return ("id__iexact", "key__icontains", "value__icontains")
 
-    class Meta:
-        verbose_name = "Generic Configuration Value"
-        verbose_name_plural = "Generic Configuration Values"
-        ordering = [ 'key' ]
+class MatchUser(BaseModel):
+    match = models.ForeignKey('celadon.Match')
+    user = models.ForeignKey('account.User')
+
+
+class MatchLogs(BaseModel):
+    match = models.ForeignKey('celadon.Match')
+    user = models.ForeignKey('account.User')
+
+    #TODO -- add details
+
 
