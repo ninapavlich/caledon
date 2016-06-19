@@ -26,14 +26,14 @@
 
 The first time you set up the project, run the following commands:
     
-    git clone git@bitbucket.org/cgpartners/nmaahc.git
-    cd nmaahc
+    git clone git@github.com:ninapavlich/celadon.git
+    cd celadon
     virtualenv venv
     source venv/bin/activate
     pip install -r requirements.txt
     python manage.py migrate
 
-    python manage.py loaddata dgb/fixtures/configuration.json #Note this may take several minutes to complete...
+    python manage.py loaddata celadon/fixtures/core.json #Note this may take several minutes to complete...
     
     python manage.py runserver
 
@@ -57,14 +57,9 @@ To connect to the Heroku project:
 
 Dump a configuration database fixture (contains all content, but no user-generated content):
 
-    python manage.py dumpdata --natural-foreign --indent=4 -e sessions -e admin -e contenttypes -e auth.Permission -e reversion -e tastypie -e kiosk.Entry -e kiosk.Donation -e kiosk.Membership -e kiosk.PandaMember -e monomail.EmailReceipt -e metrics.Event > dgb/fixtures/configuration.json
-
-Dump a complete database fixture with user-generated content:
-
-    python manage.py dumpdata --natural-foreign --indent=4 -e sessions -e admin -e contenttypes -e auth.Permission -e reversion -e tastypie > dgb/fixtures/example_data.json
-
+    python manage.py dumpdata --natural-foreign --indent=4 -e sessions -e admin -e contenttypes -e auth.Permission -e reversion > celadon/fixtures/core.json
 
 Load a fixture file:
     
-    python manage.py loaddata dgb/fixtures/configuration.json
+    python manage.py loaddata celadon/fixtures/core.json
 
