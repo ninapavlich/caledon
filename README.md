@@ -54,6 +54,14 @@ To connect to the Heroku project:
     #To push to heroku
     git push heroku master
 
+## Database/Model Updates
+
+    python manage.py makemigrations
+    python manage.py migrate
+
+    #Be sure to add new migration file to git
+    git add path/to/migration/file.py
+
 
 
 ## Database Fixtures
