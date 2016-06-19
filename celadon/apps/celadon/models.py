@@ -31,6 +31,7 @@ class BaseModel(models.Model):
 class Match(BaseModel):
     title   = models.CharField( max_length = 255)
     slug    = models.CharField( max_length = 255)
+    matchid = models.CharField( max_length = 255)
 
     def __unicode__(self):
         return "MATCH %s" % ( self.title )
@@ -50,7 +51,7 @@ class Match(BaseModel):
 
 class MatchUser(BaseModel):
     match = models.ForeignKey('celadon.Match')
-    user = models.ForeignKey('account.User')
+    user = models.ForeignKey('celadon.Player')
 
 
 
@@ -58,7 +59,13 @@ class MatchUser(BaseModel):
     class Meta:
         ordering = [ '-created_date' ] 
 
-
+class Player(BaseModel):
+    
+    uuid = models.CharField( max_length = 255)
+    bio  = models.TextField( )
+    
+    
+        
 class MatchLogs(BaseModel):
     match = models.ForeignKey('celadon.Match')
     user = models.ForeignKey('account.User')

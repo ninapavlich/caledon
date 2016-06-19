@@ -36,8 +36,11 @@ class MatchLogsAdmin(UnsavedChangesAdmin):
     }
     raw_id_fields = ('match', 'user', ) 
 
-
+class PlayerAdmin(UnsavedChangesAdmin):
+    
+    pass
 
 admin.site.register(Match, MatchAdmin)
 admin.site.register(MatchUser, MatchUserAdmin)
 admin.site.register(MatchLogs, MatchLogsAdmin)
+admin.site.register(Player, PlayerAdmin)
