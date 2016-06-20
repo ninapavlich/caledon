@@ -17,9 +17,9 @@ class MatchUserInline(admin.TabularInline):
 
 class MatchAdmin(UnsavedChangesAdmin):
 
-    prepopulated_fields = {"slug": ("title",)}
-    inlines = [MatchUserInline]
-
+    #prepopulated_fields = {"slug": ("title",)}
+    #inlines = [MatchUserInline]
+    pass
 
 class MatchUserAdmin(UnsavedChangesAdmin):
 

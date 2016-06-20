@@ -29,8 +29,8 @@ class BaseModel(models.Model):
         abstract = True          
 
 class Match(BaseModel):
-    title          = models.CharField( max_length = 255)
-    slug           = models.CharField( max_length = 255)
+    #title          = models.CharField( max_length = 255)
+    #slug           = models.CharField( max_length = 255)
     matchid        = models.CharField( max_length = 255)
     date           = models.CharField( max_length = 255) #not using DateTimeField because this will be written to by a Java server, which doesn't know how to create a Python Date object
     mapname        = models.CharField( max_length = 255)
@@ -38,20 +38,20 @@ class Match(BaseModel):
     match_complete = models.BooleanField( )
     match_aborted  = models.BooleanField( )
     
-    def __unicode__(self):
-        return "MATCH %s" % ( self.title )
+    #def __unicode__(self):
+    #    return "MATCH %s" % ( self.title )
 
-    def get_absolute_url(self):
-        return reverse('match_detail_view',  args=[self.slug] )
+    #def get_absolute_url(self):
+    #    return reverse('match_detail_view',  args=[self.slug] )
 
     class Meta:
         verbose_name = "Match"
         verbose_name_plural = "Matches"
         ordering = [ '-created_date' ] 
 
-    def save(self, *args, **kwargs):
-        unique_slugify(self, self.title) 
-        super(Match, self).save(*args, **kwargs)
+    #def save(self, *args, **kwargs):
+    #    unique_slugify(self, self.title) 
+    #    super(Match, self).save(*args, **kwargs)
 
 
 class MatchUser(BaseModel):
