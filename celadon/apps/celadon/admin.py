@@ -32,15 +32,22 @@ class MatchUserAdmin(UnsavedChangesAdmin):
 class MatchLogsAdmin(UnsavedChangesAdmin):
 
     autocomplete_lookup_fields = {
-        'fk': ['match', 'user'],
+        'fk': ['match', 'player', 'affected_player', 'logtype'],
     }
-    raw_id_fields = ('match', 'user', ) 
+    raw_id_fields = ('match', 'player', 'affected_player', 'logtype', ) 
 
 class PlayerAdmin(UnsavedChangesAdmin):
     
+    autocomplete_lookup_fields = {
+        'fk': ['current_match'],
+    }
+    raw_id_fields = ('current_match', ) 
+
+class LogTypeAdmin(UnsavedChangesAdmin):   
     pass
 
 admin.site.register(Match, MatchAdmin)
 admin.site.register(MatchUser, MatchUserAdmin)
 admin.site.register(MatchLogs, MatchLogsAdmin)
 admin.site.register(Player, PlayerAdmin)
+admin.site.register(LogType, LogTypeAdmin)

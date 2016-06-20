@@ -29,10 +29,15 @@ class BaseModel(models.Model):
         abstract = True          
 
 class Match(BaseModel):
-    title   = models.CharField( max_length = 255)
-    slug    = models.CharField( max_length = 255)
-    matchid = models.CharField( max_length = 255)
-
+    title          = models.CharField( max_length = 255)
+    slug           = models.CharField( max_length = 255)
+    matchid        = models.CharField( max_length = 255)
+    date           = models.CharField( max_length = 255) #not using DateTimeField because this will be written to by a Java server, which doesn't know how to create a Python Date object
+    mapname        = models.CharField( max_length = 255)
+    winningteam    = models.CharField( max_length = 255)
+    match_complete = models.BooleanField( )
+    match_aborted  = models.BooleanField( )
+    
     def __unicode__(self):
         return "MATCH %s" % ( self.title )
 
@@ -51,29 +56,41 @@ class Match(BaseModel):
 
 class MatchUser(BaseModel):
     match = models.ForeignKey('celadon.Match')
-    user = models.ForeignKey('celadon.Player')
-
-
-
+    user  = models.ForeignKey('celadon.Player')
+    role  = models.CharField( max_length = 255)
 
     class Meta:
         ordering = [ '-created_date' ] 
 
 class Player(BaseModel):
     
-    uuid = models.CharField( max_length = 255)
-    bio  = models.TextField( )
-    
-    
+    uuid          = models.CharField( max_length = 255 )
+    bio           = models.TextField( )
+    current_match = models.ForeignKey('celadon.Match')
+
+    class Meta:
+        ordering = [ '-created_date' ]     
         
 class MatchLogs(BaseModel):
-    match = models.ForeignKey('celadon.Match')
-    user = models.ForeignKey('account.User')
-
+    match           = models.ForeignKey('celadon.Match')
+    timestamp       = models.CharField(max_length = 255)
+    player          = models.ForeignKey('celadon.Player')
+    affected_player = models.ForeignKey('celadon.Player', related_name='player')
+    logmessage      = models.CharField(max_length = 255)
+    logtype         = models.ForeignKey('celadon.LogType')
+    
     class Meta:
         verbose_name = "Match Log"
         verbose_name_plural = "Match Logs"
         ordering = [ '-created_date' ] 
     #TODO -- add details
 
-
+class LogType(BaseModel):
+    typeid      = models.CharField( max_length = 255)
+    description = models.CharField( max_length = 255)
+    
+    class Meta:
+        verbose_name = "Log Type"
+        verbose_name_plural = "Log Types"
+        ordering = [ '-created_date' ] 
+    
