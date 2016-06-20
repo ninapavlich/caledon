@@ -34,7 +34,7 @@ class Match(BaseModel):
     matchid        = models.CharField( max_length = 255)
     date           = models.CharField( max_length = 255) #not using DateTimeField because this will be written to by a Java server, which doesn't know how to create a Python Date object
     mapname        = models.CharField( max_length = 255)
-    winningteam    = models.CharField( max_length = 255)
+    winningteam    = models.CharField( max_length = 255, null=True)
     match_complete = models.BooleanField( )
     match_aborted  = models.BooleanField( )
     
@@ -65,8 +65,8 @@ class MatchUser(BaseModel):
 class Player(BaseModel):
     
     uuid          = models.CharField( max_length = 255 )
-    bio           = models.TextField( )
-    current_match = models.ForeignKey('celadon.Match')
+    bio           = models.TextField( null=True )
+    current_match = models.ForeignKey('celadon.Match', null=True)
 
     class Meta:
         ordering = [ '-created_date' ]     
@@ -74,8 +74,8 @@ class Player(BaseModel):
 class MatchLogs(BaseModel):
     match           = models.ForeignKey('celadon.Match')
     timestamp       = models.CharField(max_length = 255)
-    player          = models.ForeignKey('celadon.Player')
-    affected_player = models.ForeignKey('celadon.Player', related_name='player')
+    player          = models.ForeignKey('celadon.Player', null=True)
+    affected_player = models.ForeignKey('celadon.Player', related_name='player', null=True)
     logmessage      = models.CharField(max_length = 255)
     logtype         = models.ForeignKey('celadon.LogType')
     
