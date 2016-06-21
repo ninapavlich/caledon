@@ -4,7 +4,7 @@ from .views import *
 
 urlpatterns = patterns('',
     
-    url(r'^matches/(?P<slug>[\w-]+)/$', MatchDetailView.as_view(), name="match_detail_view"),
+    url(r'^matches/(?P<id>[\w-]+)/$', MatchDetailView.as_view(), name="match_detail_view"),
     url(r'^matches/$', MatchListView.as_view(), name="match_list_view"),
 
 )

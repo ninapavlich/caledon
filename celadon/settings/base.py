@@ -163,6 +163,7 @@ INSTALLED_APPS = (
     'robots',
     'ckeditorfiles',
     'django_ace',
+    'ace_overlay',
     'django_inline_wrestler',
     'imagekit_cropper',
     'django_unsaved_changes', 

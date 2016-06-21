@@ -38,11 +38,11 @@ class Match(BaseModel):
     match_complete = models.BooleanField( )
     match_aborted  = models.BooleanField( )
     
-    #def __unicode__(self):
-    #    return "MATCH %s" % ( self.title )
+    def __unicode__(self):
+       return "MATCH %s - %s" % ( self.matchid, self.mapname )
 
-    #def get_absolute_url(self):
-    #    return reverse('match_detail_view',  args=[self.slug] )
+    def get_absolute_url(self):
+       return reverse('match_detail_view',  args=[self.matchid] )
 
     class Meta:
         verbose_name = "Match"
