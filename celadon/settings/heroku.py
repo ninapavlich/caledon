@@ -9,7 +9,7 @@ import herokuify
 DEBUG = env.get("DEBUG", False)
 TEMPLATE_DEBUG = DEBUG
 ALLOWED_HOSTS = ['*']
-
+HTML_MINIFY = True
 
 
 DATABASES['default'] =  dj_database_url.config()

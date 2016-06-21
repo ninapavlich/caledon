@@ -78,7 +78,7 @@ else:
 
 DEBUG = env.get("DEBUG", True)
 TEMPLATE_DEBUG = DEBUG
-HTML_MINIFY = True
+
 
 SITE_TITLE = 'celadon'
 SITE_DESCRIPTION = ''
@@ -142,7 +142,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 if IS_ON_SERVER:    
     ALLOWED_HOSTS = ['celadon.herokuapp.com', '.celadon.com', 
-        '.celadon.com.', 'celadon.s3.amazonaws.com', 's3.amazonaws.com',]
+        '.celadon.com.', 'celadon-media.s3.amazonaws.com', 's3.amazonaws.com',]
 
 
 #==============================================================================
@@ -215,8 +215,8 @@ LEGACY_URL_IGNORE_LIST = []
 #==============================================================================
 AWS_ACCESS_KEY_ID       = env.get("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY   = env.get("AWS_SECRET_ACCESS_KEY")
-AWS_STORAGE_BUCKET_NAME = env.get("AWS_STORAGE_BUCKET_NAME", 'celadon')
-AWS_STORAGE_BUCKET_NAME_MEDIA = env.get("AWS_STORAGE_BUCKET_NAME_MEDIA", 'celadon')
+AWS_STORAGE_BUCKET_NAME = env.get("AWS_STORAGE_BUCKET_NAME", 'celadon-media')
+AWS_STORAGE_BUCKET_NAME_MEDIA = env.get("AWS_STORAGE_BUCKET_NAME_MEDIA", 'celadon-media')
 
 
 AWS_STATIC_FOLDER = 'static'
